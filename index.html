@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cadastro de Despesas</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Dinheiro no Bolso</a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showHome()">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fluxo_financeiro.html">Fluxo Financeiro</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Home</h2>
+
+        <!-- Formulário de Cadastro -->
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <strong>Nova Despesa</strong>
+            </div>
+            <div class="card-body">
+                <form id="formDespesa">
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <input type="text" id="descricao" class="form-control" placeholder="Ex: Supermercado" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo de Despesa</label>
+                        <select id="tipo" class="form-select" required>
+                            <option value="Água">Água</option>
+                            <option value="Luz">Luz</option>
+                            <option value="Aluguel">Aluguel</option>
+                            <option value="IPVA">IPVA</option>
+                            <option value="IPTU">IPTU</option>
+                            <option value="Mercado">Mercado</option>
+                            <option value="Farmácia">Farmácia</option>
+                            <option value="Lazer">Lazer</option>
+                            <option value="Esportes">Esportes</option>
+                            <option value="Contas Diversas">Contas Diversas</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="valor" class="form-label">Valor</label>
+                        <input type="number" id="valor" class="form-control" placeholder="Ex: 250.00" step="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status Pago</label>
+                        <select id="status" class="form-select">
+                            <option value="true">Pago</option>
+                            <option value="false">Pendente</option>
+                        </select>
+                    </div>
+
+                    <!-- Botão Manual -->
+                    <button type="submit" id="submit-btn" class="btn btn-primary mt-2">Cadastrar</button>
+                </form>
+
+                <!-- Botão Listar Despesas -->
+                <button onclick="window.location.href='fluxo_financeiro.html'" class="btn btn-secondary mt-4">
+                    LISTAR DESPESAS
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+
+</body>
+</html>

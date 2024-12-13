@@ -1,0 +1,47 @@
+/* Remove margens extras e espaçamento desnecessário */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.container.mt-5 {
+    margin-top: 20px !important;
+}
+
+/* Remove espaço extra */
+h2.mb-4 {
+    margin-bottom: 0 !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.table {
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+#content {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.navbar {
+    font-weight: bold;
+    background: linear-gradient(to right, #1E90FF, #0078F7); /* Gradiente azul */
+}
+
+.nav-link {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
