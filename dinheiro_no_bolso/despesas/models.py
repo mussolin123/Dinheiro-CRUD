@@ -1,6 +1,6 @@
 from django.db import models
+from categorias.models import Categoria
 
-# Modelo de Despesa
 class Despesa(models.Model):
     TIPO_DESPESA = [
         ('Água', 'Água'),

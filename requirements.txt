@@ -4,3 +4,4 @@ django
 djangorestframework
 pymysql
 django-cors-headers
+djangorestframework-simplejwt
