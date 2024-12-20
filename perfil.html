@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(to bottom, #007bff, #6610f2);
+            color: white;
+            min-height: 100vh;
+        }
+        .navbar {
+            margin-bottom: 30px;
+        }
+        .profile-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .profile-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            color: black;
+        }
+        .btn-primary {
+            background-color: #6610f2;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #4b0ec4;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .checkbox-group .form-check {
+            width: 48%;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6610f2;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gerenciador de Despesas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Despesas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Relatórios</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+            
+            </div>
+
+            <div class="col-lg-8 col-md-10 mt-4">
+                <div class="profile-form shadow p-4">
+                    <h3 class="text-center mb-3">Informações do Usuário</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group mb-3">
+                                <label for="salary" class="form-label">Salário (opcional)</label>
+                                <input type="number" class="form-control" id="salary" placeholder="Informe seu salário">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="jobType" class="form-label">Tipo de Trabalho</label>
+                                <select class="form-select" id="jobType">
+                                    <option value="clt">CLT</option>
+                                    <option value="autonomo">Autônomo</option>
+                                    <option value="pj">PJ</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="savingsGoal" class="form-label">Meta de Economia</label>
+                                <input type="number" class="form-control" id="savingsGoal" placeholder="Valor a economizar">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="expenses" class="form-label">Selecione suas Despesas Fixas</label>
+                            <div class="checkbox-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="expense-luz" onclick="toggleExpenseField('luz')">
+                                    <label class="form-check-label" for="expense-luz">Luz</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="expense-agua" onclick="toggleExpenseField('agua')">
+                                    <label class="form-check-label" for="expense-agua">Água</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="expense-aluguel" onclick="toggleExpenseField('aluguel')">
+                                    <label class="form-check-label" for="expense-aluguel">Aluguel</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="expense-internet" onclick="toggleExpenseField('internet')">
+                                    <label class="form-check-label" for="expense-internet">Internet</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="expense-transporte" onclick="toggleExpenseField('transporte')">
+                                    <label class="form-check-label" for="expense-transporte">Transporte</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="expenses-list"></div>
+
+                        <button type="submit" class="btn btn-primary w-100">Salvar Informações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleExpenseField(expense) {
+            const expenseList = document.getElementById("expenses-list");
+
+            // Cria ou remove o campo de valor da despesa com base na seleção
+            if (document.getElementById(`expense-${expense}`).checked) {
+                const div = document.createElement("div");
+                div.classList.add("mb-3");
+                div.innerHTML = `
+                    <label for="${expense}-value" class="form-label">${expense.charAt(0).toUpperCase() + expense.slice(1)} (Valor)</label>
+                    <input type="number" class="form-control" id="${expense}-value" placeholder="Informe o valor de ${expense}">
+                `;
+                expenseList.appendChild(div);
+            } else {
+                const expenseField = document.getElementById(`${expense}-value`);
+                if (expenseField) {
+                    expenseField.parentElement.remove();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

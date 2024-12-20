@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'relatorios',
     'user',
     'corsheaders',
+    'financeiro',
 ]
 
 REST_FRAMEWORK = {

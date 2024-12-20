@@ -15,7 +15,7 @@ class RegisterUserView(APIView):
         if serializer.is_valid():
             user = serializer.save()
 
-            # Gerar o token
+            # Gera o token
             access_token = str(AccessToken.for_user(user))
 
             return Response({
@@ -26,7 +26,6 @@ class RegisterUserView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# View para o Login de Usuário
 class LoginUserView(APIView):
     permission_classes = [AllowAny]
 
@@ -47,9 +46,8 @@ class LoginUserView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# View para obter o perfil do usuário autenticado
 class UserProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # Usuário precisa estar autenticado
 
     def get(self, request):
         user = request.user

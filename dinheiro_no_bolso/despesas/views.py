@@ -10,7 +10,6 @@ class DespesaViewSet(viewsets.ModelViewSet):
     queryset = Despesa.objects.all().order_by('-data')
     serializer_class = DespesaSerializer
 
-    # Define que os métodos padrão exigem autenticação
     permission_classes = [AllowAny]
 
     @action(detail=False, methods=['get'], permission_classes=[AllowAny])

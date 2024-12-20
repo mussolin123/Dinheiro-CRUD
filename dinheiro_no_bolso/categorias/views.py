@@ -4,7 +4,6 @@ from rest_framework import status
 from .models import Categoria
 from .serializers import CategoriaSerializer
 
-
 class CategoriaListView(APIView):
     def get(self, request):
         categorias = Categoria.objects.all()
